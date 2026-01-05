@@ -1,0 +1,48 @@
+openapi: 3.0.1
+info:
+  title: api-docs
+  description: api-docs
+  version: 0.0.1-SNAPSHOT
+servers:
+- url: http://localhost:8080
+tags: []
+paths:
+  /test/{id}:
+    get:
+      tags:
+      - Test API
+      summary: 테스트 조회
+      description: ID로 테스트 데이터를 조회한다
+      operationId: get-test
+      parameters:
+      - name: id
+        in: path
+        description: 테스트 ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/test-id1712090405'
+              examples:
+                get-test:
+                  value: "{\r\n  \"id\" : 1,\r\n  \"title\" : \"Test Title 1\",\r\n\
+                    \  \"content\" : \"Test Content 1\"\r\n}"
+components:
+  schemas:
+    test-id1712090405:
+      type: object
+      properties:
+        id:
+          type: number
+          description: ID
+        title:
+          type: string
+          description: 제목
+        content:
+          type: string
+          description: 내용
